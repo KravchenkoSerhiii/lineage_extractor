@@ -1,4 +1,7 @@
-def extract_lineage(root):
+from xml.etree.ElementTree import Element
+
+
+def extract_lineage(root: Element) -> None:
     db_objects = {}
     informatica_objects = {}
     column_lineage = []
@@ -15,7 +18,7 @@ def extract_lineage(root):
             column_name = field.attrib["NAME"]
             column_id = len(columns) + 1
             columns[column_name] = {"id": column_id}
-        db_objects[db_name].update({'columns': columns})
+        db_objects[db_name].update({"columns": columns})
 
     for mapping in root.findall(".//MAPPING"):
         mapping_name = mapping.attrib["NAME"]
@@ -25,7 +28,7 @@ def extract_lineage(root):
             transform_name = transformation.attrib["NAME"]
             transform_fields = {}
             for field in transformation.findall(".//TRANSFORMFIELD"):
-                transform_fields[field.attrib["NAME"]] = {'id': len(transform_fields) + 1}
+                transform_fields[field.attrib["NAME"]] = {"id": len(transform_fields) + 1}
             informatica_objects[mapping_name][transform_name] = transform_fields
 
     for connector in root.findall(".//CONNECTOR"):

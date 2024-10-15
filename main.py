@@ -3,7 +3,7 @@ from extractor import extract_lineage
 from saver import save_json
 
 
-def main():
+def main() -> None:
     source_data = parse_xml("input.xml")
 
     db_objects, informatica_objects, column_lineage = extract_lineage(source_data)
