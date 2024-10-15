@@ -18,6 +18,13 @@ The ETL Lineage Extractor is a program that extracts technical lineage from an X
   - `json`
   - `pytest`
 
+## If you are using PyCharm - it may propose you to automatically create venv for your project and install requirements in it, but if not:
+
+    python -m venv venv
+    venv\Scripts\activate (on Windows)
+    source venv/bin/activate (on macOS)
+    pip install -r requirements.txt
+
 ## Usage
 Ensure that the input.XML file is located in the root directory of the project.
 The results will be saved in JSON format in the output folder.
